@@ -392,7 +392,7 @@ function spin(){
  if(spinning) return;
  spinning=true;
  document.getElementById('spin-btn').disabled=true;
- const winIdx=WINS[Math.floor(Math.random()*WINS.length)];
+ const winIdx=2; // always ₱20
  const target=-(winIdx*ARC+ARC/2)-Math.PI/2;
  const extra=(7+Math.floor(Math.random()*4))*2*Math.PI;
  const cur=angle%(2*Math.PI);
