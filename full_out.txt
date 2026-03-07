@@ -1,0 +1,45 @@
+[0:0] "Document" DOCUMENT  rel:(?,?) ?x?  left= top= w= 
+  [0:1] "Page 1" CANVAS  rel:(?,?) ?x?  left= top= w= 
+    [63:2] "Wireframe - 1" FRAME  rel:(807,1863) 1920x1080  left=53.80% top=57.36% w=128.00% 
+      [66:16] "WEB-SPIN 3" FRAME  rel:(807,1863) 1920x1080  left=53.80% top=57.36% w=128.00% 
+        [66:17] "Artboard 1" GROUP  rel:(806,1781) 2168x1185  left=53.73% top=54.83% w=144.53% 
+          [66:18] "Background" RECTANGLE  rel:(806,1781) 2168x1185  left=53.73% top=54.83% w=144.53% 20774124
+          [66:19] "Wheel" GROUP  rel:(1825,1948) 703x831  left=121.67% top=59.98% w=46.87% 
+          [66:24] "Headline" RECTANGLE  rel:(985,2123) 820x183  left=65.67% top=65.36% w=54.67% 6957a942
+          [66:25] "Logo" RECTANGLE  rel:(1156,2045) 477x44  left=77.07% top=62.96% w=31.80% aae01f48
+          [66:26] "Winners" RECTANGLE  rel:(996,2420) 798x311  left=66.40% top=74.51% w=53.20% 17aa4476
+          [66:27] "Libre" RECTANGLE  rel:(1180,2306) 429x101  left=78.67% top=71.00% w=28.60% 6dd7752e
+          [66:28] "Sub Copy" RECTANGLE  rel:(1039,2778) 749x43  left=69.27% top=85.53% w=49.93% 84e54388
+          [66:29] "Spin Button" RECTANGLE  rel:(1959,2755) 428x148  left=130.60% top=84.82% w=28.53% 37977564
+  [63:17] "Page 3" CANVAS  rel:(?,?) ?x?  left= top= w= 
+    [73:16] "Artboard 2@2x 1" FRAME  rel:(0,0) 1500x3248  left=0.00% top=0.00% w=100.00% 
+      [73:17] "Artboard 2" GROUP  rel:(-1724,-40) 4524x3374  left=-114.93% top=-1.23% w=301.60% 
+        [73:18] "Rectangle" RECTANGLE  rel:(-10,0) 1520x3248  left=-0.67% top=0.00% w=101.33% 851eb5e8
+        [73:19] "Spin Button" RECTANGLE  rel:(-1724,0) 4524x3248  left=-114.93% top=0.00% w=301.60% cb86d8a8
+        [73:21] "Vector" VECTOR  rel:(-26,-40) 1560x3374  left=-1.73% top=-1.23% w=104.00% 
+        [73:22] "CONGRATULATIONS!" TEXT  rel:(248,767) 1012x122  left=16.55% top=23.61% w=67.44% 
+        [73:23] "YOU WIN!" TEXT  rel:(321,553) 865x246  left=21.42% top=17.04% w=57.67% 
+        [73:24] "Logo copy" RECTANGLE  rel:(392,272) 722x66  left=26.13% top=8.37% w=48.13% 9767ec09
+        [73:25] "Libre copy" RECTANGLE  rel:(392,2148) 678x160  left=26.13% top=66.13% w=45.20% 4941ffb0
+        [73:26] "Vector" VECTOR  rel:(394,1012) 712x639  left=26.27% top=31.17% w=47.46% 
+        [73:27] "20" TEXT  rel:(485,1053) 521x505  left=32.35% top=32.41% w=34.73% 
+        [73:28] "Credits Bonus" TEXT  rel:(506,1476) 478x90  left=33.75% top=45.44% w=31.87% 
+        [73:29] "CLAIM YOUR REWARD" TEXT  rel:(530,1070) 431x54  left=35.35% top=32.93% w=28.73% 
+  [1:2] "Page 2" CANVAS  rel:(?,?) ?x?  left= top= w= 
+    [2:4] "Frame 1" FRAME  rel:(304,1795) 378x818  left=20.27% top=55.26% w=25.20% 
+      [4:57] "SPIN@2x 1" FRAME  rel:(304,1795) 378x818  left=20.27% top=55.26% w=25.20% 
+        [4:58] "Layer 0" RECTANGLE  rel:(304,1795) 378x818  left=20.27% top=55.26% w=25.20% f4f45de8
+        [4:59] "Hue/Saturation 2" RECTANGLE  rel:(301,1795) 383x818  left=20.10% top=55.26% w=25.54% 1ebeb6f4
+        [4:61] "Hue/Saturation 3" RECTANGLE  rel:(339,2041) 316x369  left=22.62% top=62.83% w=21.07% 3a601848
+        [4:62] "Board" RECTANGLE  rel:(339,2040) 316x316  left=22.62% top=62.82% w=21.07% 11972e65
+        [4:63] "Arrow" RECTANGLE  rel:(478,2037) 37x53  left=31.86% top=62.71% w=2.45% 44f52394
+        [4:64] "button" RECTANGLE  rel:(463,2164) 69x69  left=30.88% top=66.63% w=4.57% b42b76f8
+        [4:65] "freepik__background__57808" RECTANGLE  rel:(388,2382) 205x71  left=25.88% top=73.33% w=13.68% 792c9e72
+        [4:66] "Headline" RECTANGLE  rel:(324,1919) 344x77  left=21.61% top=59.10% w=22.92% 92135305
+        [4:67] "Logo" RECTANGLE  rel:(380,1858) 240x22  left=25.31% top=57.20% w=16.03% e1788a35
+        [4:68] "M***************" RECTANGLE  rel:(347,2487) 292x42  left=23.12% top=76.57% w=19.49% e10c9428
+        [4:69] "Amount" RECTANGLE  rel:(359,2494) 262x29  left=23.93% top=76.77% w=17.44% aa544b50
+        [4:70] "Libre" RECTANGLE  rel:(410,1992) 171x40  left=27.32% top=61.34% w=11.39% 4941ffb0
+        [4:71] "Exit Button" RECTANGLE  rel:(645,1803) 31x31  left=42.98% top=55.51% w=2.08% 8d5436f5
+        [4:72] "Nav Bar" RECTANGLE  rel:(304,2544) 378x69  left=20.27% top=78.34% w=25.20% 1fa4e82c
+        [4:73] "reward system only · 1 free trial · No purchase needed" RECTANGLE  rel:(329,2470) 337x9  left=21.91% top=76.05% w=22.44% 7c47286d

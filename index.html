@@ -3,467 +3,784 @@
 <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
- <title>TIME2BET – Spin & Win!</title>
+ <title>TIME2BET – I-Spin at Manalo!</title>
  <link rel="preconnect" href="https://fonts.googleapis.com" />
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@400;700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
  <style>
  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- :root {
- --gold:#F5C518; --gold2:#E8A000; --gold3:#FFF0A0;
- --red:#D0021B; --red2:#8B0000; --red3:#FF1744;
- --dark:#05050D; --dark2:#0A0A18; --dark3:#10102A;
- --card:rgba(255,255,255,0.04); --border:rgba(245,197,24,0.18); --white:#FFFFFF;
+ html, body { height: 100%; overflow: hidden; background: #0D0800; font-family: 'Montserrat', sans-serif; color: #fff; }
+
+ /* ═══════════════════════════════════════════════════════
+    MOBILE  (default – portrait wheel, 378 × 818 base)
+ ═══════════════════════════════════════════════════════ */
+
+ /* Centre the portrait frame in the viewport */
+ .scene {
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
  }
- html,body{height:100%;max-height:100%;background:var(--dark);font-family:'Montserrat',sans-serif;overflow:hidden;color:var(--white);}
- .bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;
- background:
- radial-gradient(ellipse 100% 55% at 50% 0%, rgba(208,2,27,0.42) 0%,transparent 65%),
- radial-gradient(ellipse 70% 50% at 100% 100%, rgba(245,197,24,0.13) 0%,transparent 60%),
- radial-gradient(ellipse 60% 40% at 0% 80%, rgba(208,2,27,0.09) 0%,transparent 60%),
- linear-gradient(180deg,#05050D 0%,#0A0A18 60%,#05050D 100%);}
- .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
- background-image:linear-gradient(rgba(245,197,24,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,197,24,0.03) 1px,transparent 1px);
- background-size:50px 50px;}
- #particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
- .pt{position:absolute;border-radius:50%;opacity:0;animation:ptFloat var(--d,8s) ease-in var(--dl,0s) infinite;}
- @keyframes ptFloat{0%{opacity:0;transform:translateY(0) scale(.4)}15%{opacity:.6}85%{opacity:.3}100%{opacity:0;transform:translateY(-100vh) scale(1.2)}}
- .page{position:relative;z-index:1;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:0 16px 16px;}
 
- /* TOP BANNER */
- .top-banner{width:100%;max-width:520px;background:linear-gradient(90deg,var(--red2) 0%,var(--red) 50%,var(--red2) 100%);
- text-align:center;padding:6px 20px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
- color:var(--gold);border-bottom:1px solid rgba(245,197,24,0.3);position:relative;overflow:hidden;}
- .top-banner::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
- background:linear-gradient(90deg,transparent,rgba(255,255,255,0.14),transparent);animation:bShine 3s ease-in-out infinite;}
- @keyframes bShine{to{left:200%}}
+ /* Hide desktop scene on mobile */
+ .desk-scene { display: none; }
 
- /* HEADER */
- header{width:100%;max-width:520px;padding:8px 0 6px;display:flex;flex-direction:column;align-items:center;gap:8px;}
- .logo{display:flex;align-items:center;gap:14px;
- background:linear-gradient(135deg,rgba(208,2,27,0.14) 0%,rgba(245,197,24,0.04) 100%);
- border:1px solid rgba(245,197,24,0.22);border-radius:18px;padding:11px 24px 11px 14px;backdrop-filter:blur(12px);}
- .logo-badge{width:44px;height:44px;background:linear-gradient(135deg,#D0021B 0%,#5E0000 100%);border-radius:12px;
- border:2px solid rgba(245,197,24,0.55);display:flex;flex-direction:column;align-items:center;justify-content:center;
- box-shadow:0 0 28px rgba(208,2,27,0.65),0 0 56px rgba(208,2,27,0.2),inset 0 1px 0 rgba(255,255,255,0.18);
- position:relative;overflow:hidden;}
- .logo-badge::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
- background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.08) 50%,transparent 70%);animation:badgeS 5s ease-in-out infinite;}
- @keyframes badgeS{0%,100%{transform:rotate(0deg)}50%{transform:rotate(360deg)}}
- .logo-badge-icon{font-size:20px;line-height:1;}
- .logo-badge-sub{font-size:7.5px;font-weight:800;letter-spacing:1px;color:var(--gold);margin-top:2px;}
- .logo-words{display:flex;flex-direction:column;}
- .logo-top{font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(245,197,24,0.55);text-transform:uppercase;}
- .logo-main{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;line-height:1;
- background:linear-gradient(135deg,#FFE566 0%,#F5C518 40%,#E8A000 100%);
- -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
- filter:drop-shadow(0 0 12px rgba(245,197,24,0.45));}
- .logo-bottom{font-size:9px;font-weight:600;letter-spacing:3px;color:rgba(255,255,255,0.35);text-transform:uppercase;}
+ /*
+  * Frame = 378 × 818 (Figma 1× dimensions).
+  * Scale to fill the viewport while preserving aspect ratio.
+  */
+ .frame {
+   position: relative;
+   --w: min(100vw, calc(100vh * 378 / 818));
+   width: var(--w);
+   height: calc(var(--w) * 818 / 378);
+   overflow: hidden;
+   flex-shrink: 0;
+ }
 
- /* HERO */
- .hero{text-align:center;margin:4px 0 6px;width:100%;max-width:520px;}
- .hero-eyebrow{display:inline-block;background:linear-gradient(90deg,var(--red) 0%,var(--red2) 100%);
- border-radius:4px;padding:3px 14px;font-size:10px;font-weight:800;letter-spacing:3px;
- text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
- .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,7.5vw,42px);letter-spacing:2px;line-height:1;color:var(--white);}
- .hero h1 em{font-style:normal;
- background:linear-gradient(135deg,#FFF5A0 0%,#F5C518 50%,#E8A000 100%);
- -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
- filter:drop-shadow(0 0 14px rgba(245,197,24,0.55));}
- .hero p{margin-top:8px;font-size:13px;color:rgba(255,255,255,0.5);font-weight:500;letter-spacing:0.3px;}
+ /* ── All layers are absolutely positioned at Figma % coords ── */
+ .layer { position: absolute; display: block; }
 
- /* WHEEL */
- .wheel-area{position:relative;display:flex;flex-direction:column;align-items:center;width:100%;max-width:520px;flex:1;justify-content:center;margin-top:-30px;}
- .wheel-frame{position:relative;width:min(270px,62vw);height:min(270px,62vw);}
- .wheel-halo{position:absolute;inset:-28px;border-radius:50%;
- background:radial-gradient(circle,rgba(208,2,27,0.32) 0%,rgba(245,197,24,0.1) 40%,transparent 70%);
- animation:haloB 3s ease-in-out infinite;}
- @keyframes haloB{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
- .wheel-deco-ring{position:absolute;inset:-14px;border-radius:50%;
- border:2.5px solid transparent;
- background:linear-gradient(var(--dark),var(--dark)) padding-box,
- conic-gradient(from 0deg,var(--gold) 0%,var(--red) 25%,var(--gold) 50%,var(--red) 75%,var(--gold) 100%) border-box;
- animation:ringR 6s linear infinite;}
- @keyframes ringR{to{transform:rotate(360deg)}}
- .wheel-bolt{position:absolute;width:11px;height:11px;border-radius:50%;z-index:5;
- background:radial-gradient(circle,#FFF 0%,var(--gold) 50%,var(--gold2) 100%);
- box-shadow:0 0 10px var(--gold),0 0 20px rgba(245,197,24,0.4);}
- .wheel-bolt:nth-child(3){top:-5px;left:50%;transform:translateX(-50%);}
- .wheel-bolt:nth-child(4){bottom:-5px;left:50%;transform:translateX(-50%);}
- .wheel-bolt:nth-child(5){left:-5px;top:50%;transform:translateY(-50%);}
- .wheel-bolt:nth-child(6){right:-5px;top:50%;transform:translateY(-50%);}
- canvas#wheel{position:relative;z-index:3;width:100%;height:100%;border-radius:50%;display:block;filter:drop-shadow(0 0 22px rgba(0,0,0,0.8));}
- .ptr-wrap{position:absolute;top:-22px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;}
- .ptr-ball{width:16px;height:16px;border-radius:50%;
- background:radial-gradient(circle at 35% 35%,#FFF 0%,var(--gold) 50%,var(--gold2) 100%);
- box-shadow:0 0 14px var(--gold),0 0 28px rgba(245,197,24,0.5);border:2px solid rgba(255,255,255,0.6);}
- .ptr-arrow{width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:32px solid var(--gold);
- filter:drop-shadow(0 3px 8px rgba(0,0,0,0.55));margin-top:-1px;}
- .wheel-hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;
- width:64px;height:64px;border-radius:50%;
- background:radial-gradient(circle at 30% 25%,#FFF7CC 0%,#F5C518 35%,#C8820A 100%);
- border:4px solid rgba(255,255,255,0.75);
- box-shadow:0 0 0 2px var(--gold2),0 0 28px rgba(245,197,24,0.9),0 0 56px rgba(245,197,24,0.3),inset 0 -4px 8px rgba(0,0,0,0.3);
- cursor:pointer;display:flex;align-items:center;justify-content:center;flex-direction:column;}
- .hub-text{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1px;color:var(--red2);line-height:1;text-align:center;text-shadow:0 1px 2px rgba(255,255,255,0.5);}
+ /* Background: Figma Layer 0 (casino photo) */
+ .bg {
+   inset: 0; width: 100%; height: 100%;
+   object-fit: fill; z-index: 0;
+ }
 
- /* SPIN BTN */
- .spin-cta{margin-top:14px;width:100%;max-width:340px;display:flex;flex-direction:column;align-items:center;gap:6px;}
- .btn-spin{position:relative;width:100%;padding:14px 0 0;background:none;border:none;cursor:pointer;transition:transform 0.15s ease;}
- .btn-spin:hover:not(:disabled){transform:translateY(-3px);}
- .btn-spin:active:not(:disabled){transform:translateY(1px);}
- .btn-spin:disabled{cursor:not-allowed;opacity:.7;}
- .btn-spin-inner{position:relative;overflow:hidden;
- background:linear-gradient(180deg,#FF2D3F 0%,#C8102E 40%,#8B0000 100%);
- border-radius:50px;padding:18px 20px;
- border:2px solid rgba(255,255,255,0.15);
- box-shadow:0 8px 36px rgba(200,16,46,0.65),0 2px 0 rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.28),inset 0 -2px 4px rgba(0,0,0,0.3);}
- .btn-spin-inner::before{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
- background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);animation:btnS 2s ease-in-out infinite;}
- @keyframes btnS{0%{left:-120%}100%{left:220%}}
- .btn-spin-text{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:4px;color:var(--gold);
- text-shadow:0 1px 4px rgba(0,0,0,0.4),0 0 20px rgba(245,197,24,0.3);
- display:flex;align-items:center;justify-content:center;gap:12px;}
- .btn-free-tag{position:absolute;top:-8px;right:20px;
- background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 100%);
- border-radius:20px;padding:3px 12px;font-size:10px;font-weight:800;letter-spacing:1px;
- color:var(--dark);text-transform:uppercase;box-shadow:0 2px 10px rgba(245,197,24,0.55);}
- .cta-note{font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.5px;text-align:center;}
+ /* Hue/Saturation 2: full-height warm golden overlay */
+ .huesat2 {
+   left: -0.67%; top: 0%; width: 101.33%; height: 100%;
+   object-fit: fill; z-index: 1;
+ }
 
- /* FOOTER */
- .foot{text-align:center;padding:4px 0 2px;}
- .foot p{font-size:10px;color:rgba(255,255,255,0.16);line-height:1.8;}
+ /* Hue/Saturation 3: warm glow over wheel area */
+ .huesat3 {
+   left: 9.33%; top: 30.05%; width: 83.60%; height: 45.07%;
+   object-fit: fill; z-index: 2;
+ }
+
+ /*
+  * ── Figma-exact positions (all as % of 378×818 frame) ──
+  * Formula: left% = (node.x - frame.x) / frame.w
+  *          top%  = (node.y - frame.y) / frame.h
+  *          w%    = node.w / frame.w
+  * Frame origin (Figma abs): x=-503, y=-68
+  */
+
+ /* Logo (4:67)  abs(-427.4,-5.04) w=240.4 h=22.2 */
+ .logo {
+   left: 20.00%; top: 7.70%; width: 63.60%;
+   z-index: 2;
+ }
+
+ /* Headline (4:66)  abs(-482.84,56.41) w=343.73 h=76.56 */
+ .headline {
+   left: 5.33%; top: 15.21%; width: 90.93%;
+   z-index: 2;
+ }
+
+ /* "Libre Ang Entry" badge (4:70)  abs(-397.16,129.45) w=170.86 h=40.30 */
+ .libre {
+   left: 28.00%; top: 24.14%; width: 45.20%;
+   z-index: 2;
+ }
+
+ /* Spinning wheel (4:62 Board)  abs(-467.72,177.80) w=316 h=316 */
+ .wheel-wrap {
+   left: 9.33%; top: 30.05%; width: 83.60%;
+   z-index: 3;
+   transform-origin: center center;
+ }
+ .wheel-wrap img {
+   width: 100%; display: block;
+   transform-origin: 50% 50%;
+ }
+
+ /* Arrow pointer (4:63)  abs(-329.12,173.77) w=36.79 h=53.39 */
+ .arrow {
+   left: 46.00%; top: 29.55%; width: 9.73%;
+   z-index: 4; pointer-events: none;
+ }
+
+ /* Centre hub / SPIN disc (4:64)  abs(-343.74,301.21) w=68.54 h=68.50 */
+ .hub {
+   left: 42.13%; top: 45.14%; width: 18.13%;
+   z-index: 5; cursor: pointer;
+   animation: btnPulse 1.8s ease-in-out infinite;
+   transition: transform .12s cubic-bezier(.34,1.56,.64,1), filter .12s;
+ }
+ .hub:active { transform: scale(.88); filter: brightness(1.3); animation: none; }
+
+ /* SPIN button (4:65)  abs(-418.83,518.80) w=205.13 h=71.02 */
+ .spin-btn {
+   left: 22.27%; top: 71.74%; width: 54.27%;
+   z-index: 5; cursor: pointer;
+   animation: btnPulse 1.8s ease-in-out infinite .3s;
+   transition: transform .12s cubic-bezier(.34,1.56,.64,1), filter .12s;
+ }
+ .spin-btn:active { transform: scale(.92); filter: brightness(1.3); animation: none; }
+
+ @keyframes btnPulse {
+   0%,100% { transform: scale(1);    filter: drop-shadow(0 0 6px rgba(255,179,0,.4)); }
+   50%      { transform: scale(1.06); filter: drop-shadow(0 0 18px rgba(255,179,0,.9)); }
+ }
 
 
- /* ══ MODAL ══ */
- #overlay{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.88);
- backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
- #overlay.show{display:flex;}
- .modal{width:100%;max-width:390px;border-radius:26px;overflow:hidden;
- box-shadow:0 0 90px rgba(245,197,24,0.28),0 40px 100px rgba(0,0,0,0.85);
- border:1px solid rgba(245,197,24,0.35);
- animation:mPop .45s cubic-bezier(.34,1.56,.64,1) forwards;}
- @keyframes mPop{from{transform:scale(.5) translateY(40px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+ /* reward-text image (4:73) */
+ .reward-text {
+   left: 6.53%; top: 82.51%; width: 89.07%;
+   z-index: 3;
+ }
 
- .modal-hero{position:relative;overflow:hidden;
- background:linear-gradient(160deg,#A00015 0%,#5E0000 100%);
- padding:32px 24px 28px;text-align:center;}
- .modal-hero::before{content:'';position:absolute;inset:0;
- background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(245,197,24,0.28) 0%,transparent 70%);}
- .modal-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:44px;
- background:linear-gradient(180deg,transparent,#0A0A18);}
- .modal-emojis{font-size:40px;margin-bottom:8px;position:relative;z-index:1;
- animation:eBounce .6s ease .2s backwards;}
- @keyframes eBounce{from{transform:scale(0) rotate(-30deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
- .modal-congrats{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.85);position:relative;z-index:1;}
- .modal-won{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:3px;color:var(--white);margin-top:2px;position:relative;z-index:1;}
+ /* Leaderboard rows overlay on top of frame images */
+ .leaderboard {
+   left: 11.33%; top: 84.61%; width: 77.33%; height: 5.17%;
+   z-index: 4; overflow: hidden;
+   display: flex; flex-direction: column; justify-content: space-around;
+   padding: 1% 5%;
+   background: rgba(0,0,0,0.5);
+   border: 1px solid rgba(255,179,0,0.15);
+   border-radius: 5px;
+ }
+ .lb-row {
+   display: flex; align-items: center; justify-content: space-between;
+   line-height: 1;
+   animation: lbSlide 0.4s ease;
+ }
+ @keyframes lbSlide { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+ .lb-user {
+   color: rgba(255,255,255,0.85);
+   font-size: calc(var(--w) * 0.026);
+   font-weight: 700;
+ }
+ .lb-amt {
+   color: #FFD060;
+   font-size: calc(var(--w) * 0.028);
+   font-weight: 800;
+ }
+ .lb-time {
+   color: rgba(255,255,255,0.45);
+   font-size: calc(var(--w) * 0.021);
+   font-weight: 600;
+ }
 
- .modal-body{background:#0A0A18;padding:0 22px 6px;}
- .reward-display{margin:20px 0 16px;
- background:linear-gradient(135deg,rgba(245,197,24,0.1) 0%,rgba(245,197,24,0.03) 100%);
- border:2px solid rgba(245,197,24,0.38);border-radius:18px;padding:20px;text-align:center;position:relative;overflow:hidden;}
- .reward-display::before{content:'';position:absolute;inset:0;
- background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(245,197,24,0.09) 0%,transparent 100%);}
- .rd-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.38);}
- .rd-amount{font-family:'Bebas Neue',sans-serif;font-size:68px;letter-spacing:2px;line-height:1;
- background:linear-gradient(135deg,#FFF5A0 0%,#F5C518 40%,#C8820A 100%);
- -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
- filter:drop-shadow(0 0 22px rgba(245,197,24,0.65));animation:aGlow 1.8s ease-in-out infinite;}
- @keyframes aGlow{0%,100%{filter:drop-shadow(0 0 16px rgba(245,197,24,.5))}50%{filter:drop-shadow(0 0 36px rgba(245,197,24,.95)) drop-shadow(0 0 70px rgba(200,130,10,.4))}}
- .rd-type{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);margin-top:4px;}
+ @keyframes ripplePop { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(1); opacity: 0; } }
 
- .urgency-row{display:flex;align-items:center;justify-content:center;gap:8px;
- background:rgba(255,71,0,0.1);border:1px solid rgba(255,71,0,0.28);
- border-radius:10px;padding:10px 16px;margin-bottom:16px;
- font-size:13px;font-weight:600;color:rgba(255,255,255,0.72);}
- #modal-countdown{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#FF4500;min-width:54px;text-align:right;}
+ /* ═══════════════════════════════════════════════════════
+    DESKTOP  (≥ 1024 px wide)
+    Base frame = 1920 × 1080.  All positions are % of that.
+    --dw  = CSS width of the frame box
+ ═══════════════════════════════════════════════════════ */
+ @media (min-width: 1024px) {
+   /* swap visibility */
+   .scene      { display: none !important; }
+   .desk-scene { display: flex !important; }
 
- .modal-cta-wrap{margin-bottom:14px;}
- .modal-cta-btn{display:block;width:100%;
- background:linear-gradient(135deg,#FFE566 0%,#F5C518 40%,#E8A000 100%);
- border:none;border-radius:50px;padding:18px;
- font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;
- color:var(--dark);text-decoration:none;text-align:center;cursor:pointer;
- box-shadow:0 6px 30px rgba(245,197,24,0.48),inset 0 1px 0 rgba(255,255,255,0.4);
- transition:transform .15s,box-shadow .15s;animation:ctaP 2s ease-in-out infinite;}
- @keyframes ctaP{0%,100%{box-shadow:0 6px 30px rgba(245,197,24,.48),inset 0 1px 0 rgba(255,255,255,.4)}50%{box-shadow:0 8px 44px rgba(245,197,24,.8),inset 0 1px 0 rgba(255,255,255,.4)}}
- .modal-cta-btn:hover{transform:translateY(-2px);}
- .modal-cta-btn:active{transform:translateY(1px);}
+   .desk-scene {
+     height: 100vh;
+     align-items: center;
+     justify-content: center;
+   }
 
- .modal-dismiss{display:block;text-align:center;padding:0 22px 22px;
- font-size:11px;color:rgba(255,255,255,0.22);cursor:pointer;letter-spacing:.5px;text-decoration:underline;background:#0A0A18;}
- .modal-dismiss:hover{color:rgba(255,255,255,0.42);}
- .modal-foot{background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);
- padding:12px 22px;display:flex;justify-content:center;gap:24px;}
- .mf-item{display:flex;align-items:center;gap:5px;font-size:10px;color:rgba(255,255,255,0.28);font-weight:600;letter-spacing:.5px;}
+   /*
+    * Scale the 1920×1080 canvas to fill the viewport keeping 16:9.
+    * --dw = actual CSS pixel width of the rendered frame box.
+    */
+   .desk-frame {
+     position: relative;
+     --dw: min(100vw, calc(100vh * 1920 / 1080));
+     width: var(--dw);
+     height: calc(var(--dw) * 1080 / 1920);
+     overflow: hidden;
+     flex-shrink: 0;
+   }
 
- /* CONFETTI */
- .cft{position:fixed;pointer-events:none;z-index:2000;animation:cftF var(--dur,2.5s) ease-in var(--dl,0s) forwards;border-radius:var(--br,2px);}
- @keyframes cftF{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}100%{transform:translateY(110vh) rotate(var(--rot,720deg)) scale(.4);opacity:0}}
- @keyframes wPop{0%{transform:scale(1)}30%{transform:scale(1.06)}100%{transform:scale(1)}}
- .wheel-frame.pop{animation:wPop .5s ease;}
+   /* All desktop layers: absolutely positioned inside .desk-frame */
+   .dl { position: absolute; display: block; }
 
- @media(max-width:380px){
- .wheel-frame{width:84vw;height:84vw;} }
+   /*
+    * All left/top/width values are derived directly from Figma absolute
+    * bounding boxes, frame origin (0,0), frame size 1920×1080.
+    *   left%  = node.x / 1920 * 100
+    *   top%   = node.y / 1080 * 100
+    *   width% = node.w / 1920 * 100
+    */
+
+   /* Background (66:18):  x=-1, y=-82, w=2168, h=1185 */
+   .d-bg {
+     left: -0.05%; top: -7.59%; width: 112.92%; height: 109.72%;
+     object-fit: fill; z-index: 0;
+   }
+
+   /* Logo (66:25):  x=349, y=182, w=477, h=44 */
+   .d-logo {
+     left: 18.18%; top: 16.85%; width: 24.84%;
+     z-index: 2;
+   }
+
+   /* Headline (66:24):  x=178, y=260, w=820, h=183 */
+   .d-headline {
+     left: 9.27%; top: 24.07%; width: 42.71%;
+     z-index: 2;
+   }
+
+   /* Libre ang Entry (66:27):  x=373, y=443, w=429, h=101 */
+   .d-libre {
+     left: 19.43%; top: 41.02%; width: 22.34%;
+     z-index: 2;
+   }
+
+   /* Winners / dynamic leaderboard panel (66:26):  x=189, y=557, w=798, h=311 */
+   .d-winners {
+     left: 9.84%; top: 51.57%; width: 41.56%; height: 28.80%;
+     z-index: 3;
+     display: flex; flex-direction: column; justify-content: space-around;
+     padding: 1.2% 3.5%;
+     background: rgba(0,0,0,0.55);
+     border: 1px solid rgba(255,153,0,0.45);
+     border-radius: calc(var(--dw) * 0.006);
+     overflow: hidden;
+   }
+   .d-winners .lb-row { animation: lbSlide 0.4s ease; }
+   .d-winners .lb-user { font-size: calc(var(--dw) * 0.013); }
+   .d-winners .lb-amt  { font-size: calc(var(--dw) * 0.014); }
+   .d-winners .lb-time { font-size: calc(var(--dw) * 0.011); }
+
+   /* Sub Copy (66:28):  x=232, y=915, w=749, h=43 */
+   .d-subcopy {
+     left: 12.08%; top: 84.72%; width: 39.01%;
+     z-index: 2;
+   }
+
+   /* Wheel body / outer ring (66:20 Body):  x=1018, y=94, w=703, h=822 — static */
+   .d-wheel-body {
+     left: 53.02%; top: 8.70%; width: 36.61%;
+     z-index: 3; pointer-events: none;
+   }
+
+   /* Spinning wheel disc (66:21 Board):  x=1018, y=92, w=703, h=703 */
+   .d-wheel-wrap {
+     left: 53.02%; top: 8.52%; width: 36.61%;
+     z-index: 4;
+     transform-origin: center center;
+   }
+   .d-wheel-wrap img {
+     width: 100%; display: block;
+     transform-origin: 50% 50%;
+   }
+
+   /* Arrow (66:22):  x=1327, y=85, w=82, h=118 */
+   .d-arrow {
+     left: 69.11%; top: 7.87%; width: 4.27%;
+     z-index: 5; pointer-events: none;
+   }
+
+   /* Hub / button (66:23):  x=1295, y=369, w=151, h=151 */
+   .d-hub {
+     left: 67.45%; top: 34.17%; width: 7.86%;
+     z-index: 6; cursor: pointer;
+     animation: btnPulse 1.8s ease-in-out infinite;
+     transition: transform .12s cubic-bezier(.34,1.56,.64,1), filter .12s;
+   }
+   .d-hub:active { transform: scale(.88); filter: brightness(1.3); animation: none; }
+
+   /* SPIN button (66:29):  x=1152, y=892, w=428, h=148 */
+   .d-spin-btn {
+     left: 60.00%; top: 82.59%; width: 22.29%;
+     z-index: 5; cursor: pointer;
+     animation: btnPulse 1.8s ease-in-out infinite .3s;
+     transition: transform .12s cubic-bezier(.34,1.56,.64,1), filter .12s;
+   }
+   .d-spin-btn:active { transform: scale(.92); filter: brightness(1.3); animation: none; }
+
+
+ }
+
+ /* ════════════════════════════════════════════════════
+    WINNER POP-UP  (Page 3 artboard 1500×3248 basis)
+    All %'s map directly to that coordinate system.
+    --w is inherited from the game frame.
+ ════════════════════════════════════════════════════ */
+ /* ════════════════════════════════════════════════════
+    WINNER POP-UP  — layered Page 3 modal (1295×1514 @2x base)
+ ════════════════════════════════════════════════════ */
+ #overlay {
+   display: none;
+   position: fixed;
+   inset: 0;
+   z-index: 1000;
+   background: rgba(0,0,0,0.72);
+   align-items: center;
+   justify-content: center;
+ }
+ #overlay.show { display: flex; }
+
+ /* Modal container — matches modal-bg.png 1295×1514 */
+ /* Outer wrapper holds the card + the floating close button */
+ #modal-outer {
+   position: relative;
+   --mw: min(88vw, calc(90vh * 1295 / 1514));
+   width: var(--mw);
+   line-height: 0; /* no ghost whitespace */
+ }
+ @media (min-width: 1024px) {
+   #modal-outer { --mw: min(44vw, calc(88vh * 1295 / 1514)); }
+ }
+
+ #modal-wrap {
+   position: relative;
+   width: var(--mw);
+   height: calc(var(--mw) * 1514 / 1295);
+   overflow: hidden;
+   border-radius: calc(var(--mw) * 0.048);
+   animation: modalIn .45s cubic-bezier(.34,1.56,.64,1) both;
+ }
+ @keyframes modalIn {
+   from { transform: scale(.72); opacity: 0; }
+   to   { transform: scale(1);   opacity: 1; }
+ }
+ @keyframes confettiFall {
+   0%   { transform: translateY(0)     rotate(0deg)   scale(1);  opacity: 1; }
+   100% { transform: translateY(105vh) rotate(720deg) scale(.5); opacity: 0; }
+ }
+ @keyframes ctaGlow {
+   0%,100% { box-shadow: 0 0 0 0 rgba(255,180,0,0), 0 0 8px 2px rgba(255,180,0,0); }
+   50%      { box-shadow: 0 0 0 5px rgba(255,180,0,.45), 0 0 30px 10px rgba(255,160,0,.35); }
+ }
+ @keyframes ctaPress {
+   0%   { transform: translateX(-50%) scale(1); }
+   50%  { transform: translateX(-50%) scale(.95); filter: brightness(1.2); }
+   100% { transform: translateX(-50%) scale(1); }
+ }
+
+ /* All modal layers positioned absolutely inside #modal-wrap */
+ .mo { position: absolute; }
+ .mo img { width: 100%; display: block; }
+
+ /* Background card — fills full wrap */
+ .mo-bg { inset: 0; width: 100%; height: 100%; object-fit: fill; display: block; z-index: 0; }
+
+ /* Close ✕ — sits OUTSIDE overflow:hidden, anchored to card's top-right corner */
+ .mo-exit {
+   position: absolute;
+   top: 0; right: 0;
+   width: calc(var(--mw) * 0.072);
+   transform: translate(38%, -38%);
+   cursor: pointer;
+   z-index: 20;
+ }
+
+ /* Logo bar (55.8% wide) */
+ .mo-logo { left: 50%; top: 5%; width: 55.8%; transform: translateX(-50%); z-index: 1; }
+
+ /* CONGRATULATIONS! (76.9% wide) */
+ .mo-congrats { left: 50%; top: 12%; width: 76.9%; transform: translateX(-50%); z-index: 1; }
+
+ /* Prize box (83.7% wide, 34.5% tall) */
+ .mo-prizebox { left: 50%; top: 22%; width: 83.7%; transform: translateX(-50%); z-index: 1; }
+
+ /* CLAIM YOUR (35.6% wide) — inside prize box top */
+ .mo-claim { left: 50%; top: 25.5%; width: 35.6%; transform: translateX(-50%); z-index: 2; }
+
+ /* Prize amount image (20.00.png — 73718b) */
+ .mo-amount { left: 50%; top: 32%; width: 55%; transform: translateX(-50%); z-index: 5; }
+
+ /* Credits Bonus (37.6% wide) */
+ .mo-credits { left: 50%; top: 48%; width: 37.6%; transform: translateX(-50%); z-index: 2; }
+
+ /* NAKARESERVE text (52.7% wide) */
+ .mo-nakares { left: 50%; top: 57%; width: 52.7%; transform: translateX(-50%); z-index: 2; }
+
+ /* ── LIVE countdown timer ── */
+ .mo-timer {
+   left: 50%; top: 63%;
+   transform: translateX(-50%);
+   font-size: calc(var(--mw) * 0.10);
+   font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+   font-weight: 400; color: #fff;
+   letter-spacing: 0.06em; white-space: nowrap;
+   text-shadow:
+     0 0 calc(var(--mw)*0.018) rgba(255,220,100,.8),
+     0 2px 0 rgba(0,0,0,.5);
+   z-index: 5;
+ }
+
+ /* CLAIM & REGISTER button (65.2% wide, 11.5% tall) */
+ .mo-register {
+   left: 50%; top: 72%;
+   width: 65.2%; transform: translateX(-50%);
+   cursor: pointer; display: block;
+   animation: ctaGlow 1.6s ease-in-out infinite;
+   transition: transform .1s, filter .1s;
+   z-index: 6;
+ }
+ .mo-register:active {
+   transform: translateX(-50%) scale(.95);
+   filter: brightness(1.25);
+   animation: none;
+ }
+
+ /* Maybe next time (26.1% wide) */
+ .mo-maybe {
+   left: 50%; top: 86%;
+   width: 26.1%; transform: translateX(-50%);
+   cursor: pointer; background: none; border: none; padding: 0;
+   z-index: 6; opacity: .85;
+   transition: opacity .15s;
+ }
+ .mo-maybe:hover { opacity: 1; }
+
  </style>
 </head>
 <body>
-<div id="particles"></div>
-<div class="bg-layer"></div>
-<div class="bg-grid"></div>
 
-<!-- MODAL -->
+<!-- MAIN PAGE -->
+<div class="scene">
+ <div class="frame">
+
+  <!-- 1a. Background (Layer 0: casino photo) -->
+  <img class="layer bg" src="assets/bg-layer0.png" alt="" draggable="false" />
+
+  <!-- 1b. Hue/Saturation 2: full golden overlay -->
+  <img class="layer huesat2" src="assets/huesat2.png" alt="" draggable="false" />
+
+  <!-- 1c. Hue/Saturation 3: wheel glow -->
+  <img class="layer huesat3" src="assets/huesat3.png" alt="" draggable="false" />
+
+  <!-- 2. Logo: "OFFICIAL TIME2BET PLATFORM" -->
+  <img class="layer logo" src="assets/logo.png" alt="TIME2BET" draggable="false" />
+
+  <!-- 3. Headline: "I-SPIN AT MANALO NG / GAME TOKENS!" -->
+  <img class="layer headline" src="assets/headline.png" alt="" draggable="false" />
+
+  <!-- 4. Badge: "LIBRE ANG ENTRY" -->
+  <img class="layer libre" src="assets/libre.png" alt="" draggable="false" />
+
+  <!-- 5. Spinning wheel -->
+  <div class="layer wheel-wrap">
+   <img id="wheel-img" src="assets/wheel.png" alt="Wheel" draggable="false" />
+  </div>
+
+  <!-- 6. Arrow pointer (static, above wheel) -->
+  <img class="layer arrow" src="assets/arrow.png" alt="" draggable="false" />
+
+  <!-- 7. Centre hub button -->
+  <img class="layer hub" id="hub" src="assets/hub.png" alt="SPIN" draggable="false" />
+
+  <!-- 8. SPIN button -->
+  <img class="layer spin-btn" id="spin-btn" src="assets/spin-btn.png" alt="SPIN" draggable="false" />
+
+  <!-- 9. Reward system text image -->
+  <img class="layer reward-text" src="assets/reward-text.png" alt="" draggable="false" />
+
+  <!-- 10. Dynamic leaderboard rows -->
+  <div class="layer leaderboard" id="leaderboard"></div>
+
+
+ </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     DESKTOP SCENE  (hidden on mobile via @media)
+════════════════════════════════════════════════════ -->
+<div class="desk-scene">
+ <div class="desk-frame">
+
+  <!-- Background (66:18) -->
+  <img class="dl d-bg" src="assets/desktop-bg.png" alt="" draggable="false" />
+
+  <!-- Logo (66:25) -->
+  <img class="dl d-logo" src="assets/desktop-logo.png" alt="TIME2BET" draggable="false" />
+
+  <!-- Headline (66:24) -->
+  <img class="dl d-headline" src="assets/desktop-headline.png" alt="" draggable="false" />
+
+  <!-- Libre ang Entry (66:27) -->
+  <img class="dl d-libre" src="assets/desktop-libre.png" alt="" draggable="false" />
+
+  <!-- Winners panel (66:26) — live leaderboard -->
+  <div class="dl d-winners" id="d-leaderboard"></div>
+
+  <!-- Sub Copy (66:28) -->
+  <img class="dl d-subcopy" src="assets/desktop-subcopy.png" alt="" draggable="false" />
+
+  <!-- Wheel outer body / ring (66:20 Body) — static -->
+  <img class="dl d-wheel-body" src="assets/desktop-wheel-body.png" alt="" draggable="false" />
+
+  <!-- Spinning wheel disc (66:21 Board) -->
+  <div class="dl d-wheel-wrap">
+   <img id="d-wheel-img" src="assets/desktop-wheel-disc.png" alt="Wheel" draggable="false" />
+  </div>
+
+  <!-- Arrow pointer (66:22) — static -->
+  <img class="dl d-arrow" src="assets/desktop-arrow.png" alt="" draggable="false" />
+
+  <!-- Hub / centre button (66:23) -->
+  <img class="dl d-hub" id="d-hub" src="assets/desktop-hub.png" alt="SPIN" draggable="false" />
+
+  <!-- SPIN button (66:29) -->
+  <img class="dl d-spin-btn" id="d-spin-btn" src="assets/desktop-spin-btn.png" alt="SPIN" draggable="false" />
+
+
+ </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     WINNER POP-UP  — layered Page 3 modal
+════════════════════════════════════════════════════ -->
 <div id="overlay">
- <div class="modal">
- <div class="modal-hero">
- 
- <div class="modal-congrats">Congratulations!</div>
- <div class="modal-won">YOU WON!</div>
- </div>
- <div class="modal-body">
- <div class="reward-display">
- <div class="rd-label">Your Reward</div>
- <div class="rd-amount" id="modal-amt">₱20</div>
- <div class="rd-type">Casino Chips Bonus</div>
- </div>
- <div class="urgency-row">
- <span>⏰</span>
- <span>Naka-reserve ka para sa loob ng</span>
- <span id="modal-countdown">09:59</span>
- </div>
- <div class="modal-cta-wrap">
- <a class="modal-cta-btn" href="https://www.time2bet88.net/register" target="_blank" rel="noopener">MAG-REGISTER AT I-CLAIM</a>
- </div>
- </div>
- <span class="modal-dismiss" id="modal-dismiss">Hindi na, salamat</span>
- <div class="modal-foot">
- <div class="mf-item">Secure</div>
- <div class="mf-item">Instant</div>
- <div class="mf-item">Verified</div>
- </div>
- </div>
-</div>
+ <div id="modal-outer">
+  <!-- Close ✕ — outside overflow:hidden so it floats above the card corner -->
+  <div class="mo-exit" id="modal-exit"><img src="assets/exit-btn.png" alt="Close" draggable="false" /></div>
 
-<!-- PAGE -->
-<div class="page">
- <div class="top-banner">LIMITADONG ORAS LANG &mdash; I-SPIN NGAYON AT MANALO!</div>
- <header>
- <div class="logo">
- <div class="logo-badge">
- <div class="logo-badge-icon"></div>
- <div class="logo-badge-sub">OFFICIAL</div>
- </div>
- <div class="logo-words">
-<div class="logo-top">OFFICIAL</div>
-<div class="logo-main">TIME2BET</div>
- <div class="logo-bottom">Online Casino · Philippines</div>
- </div>
- </div>
- </header>
+  <div id="modal-wrap">
 
- <div class="hero">
- <div class="hero-eyebrow">Libreng Reward – Ngayon Lang!</div>
- <h1>I-SPIN AT<br><em>MANALO</em> NG<br>CASINO CHIPS!</h1>
- <p>Libre ang spin — walang deposit na kailangan</p>
- </div>
+  <!-- 1. Card background -->
+  <img class="mo-bg" src="assets/modal-bg.png" alt="" draggable="false" />
 
- <div class="wheel-area">
- <div class="wheel-frame" id="wheel-frame">
- <div class="wheel-halo"></div>
- <div class="wheel-deco-ring"></div>
- <div class="wheel-bolt"></div>
- <div class="wheel-bolt"></div>
- <div class="wheel-bolt"></div>
- <div class="wheel-bolt"></div>
- <canvas id="wheel" width="700" height="700"></canvas>
- <div class="ptr-wrap">
- <div class="ptr-ball"></div>
- <div class="ptr-arrow"></div>
- </div>
- <div class="wheel-hub" id="hub">
- <div class="hub-text">SPIN<br>NOW</div>
- </div>
- </div>
- <div class="spin-cta">
- <button class="btn-spin" id="spin-btn">
- <div class="btn-free-tag">FREE SPIN</div>
- <div class="btn-spin-inner">
- <div class="btn-spin-text">I-SPIN NA! </div>
- </div>
- </button>
- <div class="cta-note">1 libreng spin · walang credit card · walang deposit</div>
- </div>
- </div>
+  <!-- 3. Logo -->
+  <div class="mo mo-logo"><img src="assets/modal-logo.png" alt="TIME2BET" draggable="false" /></div>
 
- <div class="foot">
-  <p>© 2026 Time2Bet · 18+ lamang · Mangarap nang responsable</p>
- </div>
-</div>
+  <!-- 4. CONGRATULATIONS! -->
+  <div class="mo mo-congrats"><img src="assets/modal-congrats.png" alt="CONGRATULATIONS!" draggable="false" /></div>
+
+  <!-- 5. Prize box glow frame -->
+  <div class="mo mo-prizebox"><img src="assets/modal-prizebox.png" alt="" draggable="false" /></div>
+
+  <!-- 6. CLAIM YOUR text -->
+  <div class="mo mo-claim"><img src="assets/modal-claim-text.png" alt="" draggable="false" /></div>
+
+  <!-- 7. Prize amount image -->
+  <div class="mo mo-amount"><img src="assets/20.00.png" alt="20.00" draggable="false" /></div>
+
+  <!-- 8. Credits Bonus -->
+  <div class="mo mo-credits"><img src="assets/modal-credits-bonus.png" alt="" draggable="false" /></div>
+
+  <!-- 9. NAKARESERVE text -->
+  <div class="mo mo-nakares"><img src="assets/modal-nakareserve.png" alt="" draggable="false" /></div>
+
+  <!-- 10. Live countdown timer -->
+  <div class="mo mo-timer" id="modal-timer">09m00s</div>
+
+  <!-- 11. CLAIM & REGISTER button -->
+  <a class="mo mo-register" href="https://www.time2bet88.net/" target="_blank" rel="noopener noreferrer" id="modal-cta">
+   <img src="assets/modal-register-btn.png" alt="CLAIM &amp; REGISTER" draggable="false" />
+  </a>
+
+  <!-- 12. Maybe next time -->
+  <button class="mo mo-maybe" id="modal-dismiss">
+   <img src="assets/modal-maybe-next.png" alt="Maybe next time" draggable="false" />
+  </button>
+
+  </div><!-- #modal-wrap -->
+ </div><!-- #modal-outer -->
+</div><!-- #overlay -->
 
 <script>
-const SEGS=[
- {label:'₱5', bg:'#C8102E',bgL:'#E01030',text:'#FFE566'},
- {label:'₱10', bg:'#D4A800',bgL:'#F5C518',text:'#1A0000'},
- {label:'₱20', bg:'#7B0018',bgL:'#A0001F',text:'#FFE566'},
- {label:'FREE\nSPIN',bg:'#18184A',bgL:'#22226E',text:'#F5C518'},
- {label:'₱50', bg:'#C8102E',bgL:'#E01030',text:'#FFE566'},
- {label:'₱5', bg:'#D4A800',bgL:'#F5C518',text:'#1A0000'},
- {label:'₱100', bg:'#7B0018',bgL:'#A0001F',text:'#FFE566'},
- {label:'₱10', bg:'#C8102E',bgL:'#E01030',text:'#FFE566'},
- {label:'₱20', bg:'#D4A800',bgL:'#F5C518',text:'#1A0000'},
- {label:'FREE\nSPIN',bg:'#18184A',bgL:'#22226E',text:'#F5C518'},
- {label:'₱5', bg:'#7B0018',bgL:'#A0001F',text:'#FFE566'},
- {label:'₱50', bg:'#C8102E',bgL:'#E01030',text:'#FFE566'},
-];
-const N=SEGS.length, ARC=(2*Math.PI)/N;
-const WINS=[2,4,6,2,4,2,6];
-const canvas=document.getElementById('wheel');
-const ctx=canvas.getContext('2d');
-const S=canvas.width, CX=S/2, CY=S/2, R=S/2-16;
-let angle=0, spinning=false;
+const wheelImg    = document.getElementById('wheel-img');
+const dWheelImg   = document.getElementById('d-wheel-img');
 
-function drawWheel(rot){
- ctx.clearRect(0,0,S,S);
+const SEGMENTS = ['100','FREE SPIN','5','50','10','5','FREE SPIN','30','5','50','20','5'];
+const SEG_DEG = 360 / SEGMENTS.length; // 30°
 
- // Shadow base
- ctx.save();
- ctx.beginPath(); ctx.arc(CX,CY,R+8,0,2*Math.PI);
- ctx.fillStyle='rgba(0,0,0,0.6)'; ctx.shadowBlur=30; ctx.shadowColor='#000'; ctx.fill();
- ctx.restore();
+// Pre-align '20' (winIdx=10) under the arrow at rest
+// segCentre = 10*30 + 15 = 315°  →  toTop = 360-315 = 45°
+let rotation = 45, spinning = false;
 
- for(let i=0;i<N;i++){
- const s=rot+i*ARC, e=s+ARC, sg=SEGS[i];
- ctx.save();
- ctx.beginPath(); ctx.moveTo(CX,CY); ctx.arc(CX,CY,R,s,e); ctx.closePath();
-
- // Radial gradient per segment
- const mx=CX+R*.55*Math.cos(s+ARC/2), my=CY+R*.55*Math.sin(s+ARC/2);
- const grd=ctx.createRadialGradient(mx,my,0,CX,CY,R);
- grd.addColorStop(0,sg.bgL); grd.addColorStop(1,sg.bg);
- ctx.fillStyle=grd; ctx.fill();
-
- // Separator lines
- ctx.strokeStyle='rgba(0,0,0,0.55)'; ctx.lineWidth=2.5; ctx.stroke();
-
- // Inner arc highlight
- ctx.beginPath(); ctx.arc(CX,CY,R*.82,s+.04,e-.04);
- ctx.strokeStyle='rgba(255,255,255,0.07)'; ctx.lineWidth=10;
- ctx.stroke();
-
- ctx.restore();
-
- // Gold rim dot
- const da=s+ARC/2, dr=R-22;
- ctx.save();
- ctx.beginPath(); ctx.arc(CX+dr*Math.cos(da),CY+dr*Math.sin(da),7,0,2*Math.PI);
- const dg=ctx.createRadialGradient(CX+dr*Math.cos(da)-2,CY+dr*Math.sin(da)-2,0,CX+dr*Math.cos(da),CY+dr*Math.sin(da),7);
- dg.addColorStop(0,'#FFFFFF'); dg.addColorStop(1,'#F5C518');
- ctx.fillStyle=dg; ctx.shadowColor='#F5C518'; ctx.shadowBlur=8; ctx.fill();
- ctx.restore();
-
- // Text
- ctx.save();
- ctx.translate(CX,CY); ctx.rotate(s+ARC/2);
- ctx.textAlign='right'; ctx.textBaseline='middle';
- ctx.shadowColor='rgba(0,0,0,0.75)'; ctx.shadowBlur=6;
- const lines=sg.label.split('\n');
- if(lines.length===1){
- ctx.fillStyle=sg.text; ctx.font=`900 ${S*.043}px Montserrat,sans-serif`;
- ctx.fillText(sg.label,R-34,0);
- } else {
- ctx.fillStyle=sg.text; ctx.font=`900 ${S*.033}px Montserrat,sans-serif`;
- ctx.fillText(lines[0],R-34,-11); ctx.fillText(lines[1],R-34,11);
- }
- ctx.restore();
- }
-
- // Outer golden rim
- ctx.beginPath(); ctx.arc(CX,CY,R+1,0,2*Math.PI);
- const rimG=ctx.createLinearGradient(0,0,S,S);
- rimG.addColorStop(0,'#FFE566'); rimG.addColorStop(.5,'#E8A000'); rimG.addColorStop(1,'#FFE566');
- ctx.strokeStyle=rimG; ctx.lineWidth=6; ctx.stroke();
-
- ctx.beginPath(); ctx.arc(CX,CY,R-1,0,2*Math.PI);
- ctx.strokeStyle='rgba(0,0,0,0.6)'; ctx.lineWidth=3; ctx.stroke();
+/* sync both wheel images together */
+function setRotation(r) {
+ rotation = r;
+ const t = `rotate(${r}deg)`;
+ wheelImg.style.transform = t;
+ dWheelImg.style.transform = t;
 }
-drawWheel(angle);
 
-function spin(){
- if(spinning) return;
- spinning=true;
- document.getElementById('spin-btn').disabled=true;
- const winIdx=2; // always ₱20
- const target=-(winIdx*ARC+ARC/2)-Math.PI/2;
- const extra=(7+Math.floor(Math.random()*4))*2*Math.PI;
- const cur=angle%(2*Math.PI);
- const toT=((target-cur+4*Math.PI)%(2*Math.PI));
- const total=extra+toT, start=angle, end=start+total;
- const dur=5000+Math.random()*1200, t0=performance.now();
- function ease(t){return 1-Math.pow(1-t,4.5);}
- function frame(now){
- const p=Math.min((now-t0)/dur,1);
- angle=start+(end-start)*ease(p);
- drawWheel(angle);
- if(p<1){requestAnimationFrame(frame);}
- else{angle=end;spinning=false;done(winIdx);}
+// Idle slow spin
+let idleRaf;
+function idleSpin() {
+ setRotation(rotation + 0.08);
+ idleRaf = requestAnimationFrame(idleSpin);
+}
+idleSpin();
+
+function spin() {
+ if (spinning) return;
+ spinning = true;
+ cancelAnimationFrame(idleRaf);
+ document.getElementById('spin-btn').style.pointerEvents   = 'none';
+ document.getElementById('hub').style.pointerEvents        = 'none';
+ document.getElementById('d-spin-btn').style.pointerEvents = 'none';
+ document.getElementById('d-hub').style.pointerEvents      = 'none';
+
+ const winIdx  = 10; // always '20'
+ const TARGET  = (360 - (winIdx * SEG_DEG + SEG_DEG / 2)) % 360; // 45°
+ const cur     = ((rotation % 360) + 360) % 360;
+ let   toTop   = (TARGET - cur + 360) % 360;
+ if (toTop < 90) toTop += 360;
+ const fullSpins = (6 + Math.floor(Math.random() * 4)) * 360;
+ const delta = fullSpins + toTop;
+
+ const start = rotation, end = start + delta;
+ const dur = 5000 + Math.random() * 1200, t0 = performance.now();
+
+ function ease(t) { return 1 - Math.pow(1 - t, 4.5); }
+ function frame(now) {
+  const p = Math.min((now - t0) / dur, 1);
+  setRotation(start + (end - start) * ease(p));
+  if (p < 1) { requestAnimationFrame(frame); }
+  else {
+   spinning = false;
+   idleSpin();
+   done(winIdx);
+  }
  }
  requestAnimationFrame(frame);
 }
 
-function done(i){
- const wf=document.getElementById('wheel-frame');
- wf.classList.add('pop'); setTimeout(()=>wf.classList.remove('pop'),500);
- const prize=SEGS[i].label.replace('\n',' ');
- document.getElementById('modal-amt').textContent=prize;
- confetti();
- setTimeout(()=>{document.getElementById('overlay').classList.add('show');startCountdown();},750);
-}
-
-let cdTimer=null;
-function startCountdown(){
- let secs=9*60+59; clearInterval(cdTimer);
- const el=document.getElementById('modal-countdown');
- (function tick(){
- el.textContent=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');
- if(secs-->0) cdTimer=setTimeout(tick,1000);
- })();
-}
-
-function confetti(){
- const cols=['#F5C518','#C8102E','#FF4500','#FFFFFF','#E8A000','#FF6B6B','#FFF0A0'];
- for(let i=0;i<100;i++){
- const el=document.createElement('div');
- el.className='cft';
- const sz=7+Math.random()*10, rot=360+Math.random()*720;
- el.style.cssText=`left:${Math.random()*100}vw;top:${5+Math.random()*35}vh;
- width:${sz}px;height:${sz*(Math.random()>.5?1:.35)}px;
- background:${cols[Math.floor(Math.random()*cols.length)]};
- --dur:${2+Math.random()*2}s;--dl:${Math.random()*.9}s;
- --rot:${rot}deg;--br:${Math.random()>.5?'50%':'3px'};`;
- document.body.appendChild(el);
- setTimeout(()=>el.remove(),4200);
+function launchConfetti() {
+ const colors = ['#FFD700','#FF8C00','#FFFFFF','#FF4500','#FFB400'];
+ for (let i = 0; i < 65; i++) {
+  const p = document.createElement('div');
+  const c = colors[Math.floor(Math.random()*colors.length)];
+  const sz = 6 + Math.random()*7;
+  const x  = 10 + Math.random()*80;
+  const dur = 1.2 + Math.random()*1.5;
+  const del = Math.random()*0.5;
+  p.style.cssText = `position:fixed;pointer-events:none;z-index:1100;border-radius:${Math.random()>.5?'50%':'2px'};width:${sz}px;height:${sz}px;background:${c};left:${x}vw;top:-12px;animation:confettiFall ${dur}s ease-in ${del}s both;`;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),(dur+del+.2)*1000);
  }
 }
 
-document.getElementById('spin-btn').addEventListener('click',spin);
-document.getElementById('hub').addEventListener('click',spin);
-document.getElementById('modal-dismiss').addEventListener('click',()=>{
- document.getElementById('overlay').classList.remove('show');
- clearInterval(cdTimer);
- document.getElementById('spin-btn').disabled=false;
-});
+function done(i) {
+ const seg = SEGMENTS[i];
+ document.getElementById('overlay').style.display = 'flex';
+ launchConfetti();
+ startCountdown();
+ try { localStorage.setItem('pw', JSON.stringify({v: seg, t: Date.now()})); } catch(e) {}
+}
 
-// Particles
-(function(){
- const c=document.getElementById('particles');
- const cls=['rgba(245,197,24,.5)','rgba(208,2,27,.4)','rgba(255,255,255,.18)'];
- for(let i=0;i<40;i++){
- const p=document.createElement('div'); p.className='pt';
- const sz=2+Math.random()*5;
- p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:${Math.random()*5}%;
- background:${cls[Math.floor(Math.random()*cls.length)]};--d:${5+Math.random()*9}s;--dl:${Math.random()*10}s;`;
- c.appendChild(p);
+function closeModal() {
+ document.getElementById('overlay').style.display = 'none';
+ clearInterval(window._cdI);
+ try { localStorage.removeItem('pw'); } catch(e) {}
+ document.getElementById('spin-btn').style.pointerEvents   = '';
+ document.getElementById('hub').style.pointerEvents        = '';
+ document.getElementById('d-spin-btn').style.pointerEvents = '';
+ document.getElementById('d-hub').style.pointerEvents      = '';
+ idleSpin();
+}
+
+function startCountdown(secs) {
+ secs = (secs !== undefined) ? secs : 9 * 60;
+ const el = document.getElementById('modal-timer');
+ clearInterval(window._cdI);
+ function tick() {
+  const m = String(Math.floor(secs / 60)).padStart(2,'0');
+  const s = String(secs % 60).padStart(2,'0');
+  el.textContent = m + 'm' + s + 's';
+  if (secs > 0) secs--; else clearInterval(window._cdI);
  }
+ tick();
+ window._cdI = setInterval(tick, 1000);
+}
+
+// ── FAKE LEADERBOARD ──
+const LB_NAMES = ['M','J','R','A','C','K','D','L','B','E','N','S','T','V','G'];
+const LB_AMTS  = [5,10,20,30,50,100,'FREE SPIN'];
+const LB_MAX   = 9;
+let lbEntries  = [
+  {u:'M***********', a:'₱50',  t:2},
+  {u:'J***********', a:'₱20',  t:5},
+  {u:'R***********', a:'₱100', t:8},
+  {u:'A***********', a:'₱30',  t:11},
+  {u:'C***********', a:'₱5',   t:14},
+  {u:'K***********', a:'₱20',  t:17},
+  {u:'D***********', a:'₱100', t:21},
+  {u:'L***********', a:'FREE SPIN', t:24},
+  {u:'B***********', a:'₱50',  t:28},
+];
+
+function randUser() {
+  const l = LB_NAMES[Math.floor(Math.random()*LB_NAMES.length)];
+  const stars = '*'.repeat(8 + Math.floor(Math.random()*4));
+  return l + stars;
+}
+function randAmt() {
+  const v = LB_AMTS[Math.floor(Math.random()*LB_AMTS.length)];
+  return typeof v === 'number' ? '₱'+v : v;
+}
+function tickLB() {
+  lbEntries.forEach(e => { if (e.t < 60) e.t++; });
+  lbEntries.unshift({u: randUser(), a: randAmt(), t: 0});
+  lbEntries = lbEntries.slice(0, LB_MAX);
+  renderLB();
+}
+
+function renderLB() {
+  function makeRows(entries) {
+    return entries.map(e =>
+      `<div class="lb-row">
+        <span class="lb-user">${e.u}</span>
+        <span class="lb-amt">${e.a}</span>
+        <span class="lb-time">${e.t === 0 ? 'just now' : e.t+' min'+(e.t>1?'s':'')+' ago'}</span>
+      </div>`
+    ).join('');
+  }
+  const mobile  = document.getElementById('leaderboard');
+  const desktop = document.getElementById('d-leaderboard');
+  if (mobile)  mobile.innerHTML  = makeRows(lbEntries.slice(0, 3));
+  if (desktop) desktop.innerHTML = makeRows(lbEntries);
+}
+
+renderLB();
+setInterval(tickLB, 5000);
+
+// ── Ripple burst ──
+function ripple(el) {
+  const rect = el.getBoundingClientRect();
+  const cx = rect.left + rect.width  / 2;
+  const cy = rect.top  + rect.height / 2;
+  const sz = Math.max(rect.width, rect.height) * 2.2;
+  const r  = document.createElement('div');
+  r.style.cssText = `
+    position:fixed; pointer-events:none; z-index:9999;
+    border-radius:50%;
+    width:${sz}px; height:${sz}px;
+    left:${cx - sz/2}px; top:${cy - sz/2}px;
+    background: radial-gradient(circle, rgba(255,200,0,.55) 0%, rgba(255,140,0,.2) 40%, transparent 70%);
+    transform:scale(0); opacity:1;
+    animation: ripplePop .55s cubic-bezier(.22,1,.36,1) forwards;
+  `;
+  document.body.appendChild(r);
+  setTimeout(() => r.remove(), 600);
+}
+
+// ── Event wiring ──
+document.getElementById('spin-btn').addEventListener('click', e => { ripple(e.currentTarget); spin(); });
+document.getElementById('hub').addEventListener('click', e => { ripple(e.currentTarget); spin(); });
+document.getElementById('d-spin-btn').addEventListener('click', e => { ripple(e.currentTarget); spin(); });
+document.getElementById('d-hub').addEventListener('click', e => { ripple(e.currentTarget); spin(); });
+
+document.getElementById('modal-exit').addEventListener('click', closeModal);
+document.getElementById('modal-dismiss').addEventListener('click', closeModal);
+
+// Restore popup if a fresh win was cached (within 9 min)
+(function() {
+ try {
+  const d = localStorage.getItem('pw');
+  if (!d) return;
+  const {v, t} = JSON.parse(d);
+  const elapsed = Math.floor((Date.now() - t) / 1000);
+  const remain  = 9 * 60 - elapsed;
+  if (remain > 0) {
+   document.getElementById('overlay').style.display = 'flex';
+   startCountdown(remain);
+  } else {
+   localStorage.removeItem('pw');
+  }
+ } catch(e) {}
 })();
 
 

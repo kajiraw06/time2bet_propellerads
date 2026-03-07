@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><style>
+body { background: #111; color: #fff; font-family: monospace; padding: 20px; }
+.item { margin: 10px; padding: 10px; border: 1px solid #444; display: inline-block; vertical-align: top; max-width: 420px; }
+img { max-width: 400px; max-height: 300px; display: block; background: repeating-conic-gradient(#333 0% 25%, #222 0% 50%) 0 0 / 16px 16px; object-fit: contain; }
+.label { font-size: 12px; color: #0f0; margin-bottom: 4px; }
+.dim { font-size: 10px; color: #888; }
+</style></head>
+<body>
+<h2 style="color:gold">Figma Winner Pop-up — Image Identification</h2>
+<div id="grid"></div>
+<script>
+const imgs = [
+  ['modal-congrats','1159x167'],
+  ['modal-register-btn','399x156'],
+  ['modal-register-btn2','407x141'],
+  ['modal-full-bg','1520x3248'],
+  ['modal-full-bg2','1864x3312'],
+  ['modal-claim-text','477x44'],
+  ['modal-claim-text2','375x22'],
+  ['modal-credits-bonus','548x88'],
+  ['modal-credits-bonus2','410x92'],
+  ['modal-nakareserve','342x76'],
+  ['modal-nakareserve2','340x81'],
+  ['modal-maybe-next','375x68'],
+  ['modal-divider','334x9'],
+  ['modal-frame1','798x311'],
+  ['modal-frame2','798x311'],
+  ['modal-box-a','352x352'],
+  ['modal-box-b','314x314'],
+  ['modal-box-c','352x411'],
+  ['modal-box-d','314x366'],
+  ['modal-tall-a','188x406'],
+  ['modal-tall-b','190x406'],
+  ['modal-tall-c','270x480'],
+  ['modal-small-a','271x149'],
+  ['modal-mobile-bg','1080x1920'],
+  // Known assets for reference
+  ['modal-bg2','existing: Spin Button bg'],
+  ['modal-logo','existing: Logo'],
+  ['exit-btn','existing: Exit Button'],
+  ['libre','existing: Libre/CTA old'],
+  ['modal-cta','existing: modal-cta'],
+];
+const g = document.getElementById('grid');
+imgs.forEach(([name, dim]) => {
+  const d = document.createElement('div');
+  d.className = 'item';
+  d.innerHTML = '<div class="label">' + name + '.png</div>' +
+    '<div class="dim">' + dim + '</div>' +
+    '<img src="assets/' + name + '.png" onerror="this.style.opacity=0.2;this.alt=\'MISSING\'">';
+  g.appendChild(d);
+});
+</script>
+</body>
+</html>
